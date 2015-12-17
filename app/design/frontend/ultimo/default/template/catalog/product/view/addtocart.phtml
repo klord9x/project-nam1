@@ -24,6 +24,13 @@
  * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
  */
 ?>
+<?php
+if(!Mage::getSingleton('customer/session')->isLoggedIn()){ 
+    echo '<span class="login_for_details" style="float:left"><strong>'.$this->__('Login to Add to Cart').'</strong></span>';
+return;
+}
+?>
+
 <?php $_product = $this->getProduct(); ?>
 <?php $buttonTitle = $this->__('Add to Cart'); ?>
 <?php if ($_product->isSaleable()): ?>
