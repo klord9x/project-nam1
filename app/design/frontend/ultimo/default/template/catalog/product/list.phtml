@@ -158,7 +158,10 @@
             </div>
                 <!-- Add Some infor for store liên hệ -->
             <div class="right-column grid12-3 mobile-grid-half">
-                <?php echo $this->getPriceHtml($_product, true) ?>                
+                <?php echo $this->getPriceHtml($_product, true) ?>
+                <?php if(!($_product->getStockItem() && $_product->getStockItem()->getIsInStock())): ?> 
+                    <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+                <?php endif; ?>               
                     <!-- <div class="container_product_secondary_2 std block_product_secondary_bottom"><div class="feature feature-icon-hover indent first">
                         <span class="ib ic ic-lg ic-plane"></span>
                         <p class="no-margin ">We will send this product in 2 days. <a href="#">Read more...</a></p>
@@ -177,34 +180,37 @@
                     </div> -->
 
                     <!-- <div class="grid12-3"> -->
-    <div class="collapsible mobile-collapsible">
+                    <div class="collapsible mobile-collapsible">
 
-        <h6 class="block-title heading">Liên hệ</h6>
-        <div class="block-content">
-            <div class="feature feature-icon-hover indent first">
-                <span class="ib ic ic-phone ic-lg"></span>
-                <p class="no-margin ">Call Us +001 555 801<br>Fax +001 555 802</p>
-            </div>
-            <div class="feature feature-icon-hover indent">
-                <span class="ib ic ic-mobile ic-lg"></span>
-                <p class="no-margin ">+77 123 1234<br>+42 98 9876</p>
-            </div>
-            <!-- <div class="feature feature-icon-hover indent">
-                <span class="ib ic ic-letter ic-lg"></span>
-                <p class="no-margin ">boss@example.com<br>me@example.com</p>
-            </div>
-            <div class="feature feature-icon-hover indent last">
-                <span class="ib ic ic-skype ic-lg"></span>
-                <p class="no-margin ">Skype: samplelogin<br>skype-support</p>
-            </div> -->
-        </div>
+                        <h6 class="block-title heading">Liên hệ</h6>
+                        <div class="block-content">
+                            <div class="feature feature-icon-hover indent first">
+                                <span class="ib ic ic-phone ic-lg"></span>
+                                <p class="no-margin ">Call Us +001 555 801<br>Fax +001 555 802</p>
+                            </div>
+                            <div class="feature feature-icon-hover indent">
+                                <span class="ib ic ic-mobile ic-lg"></span>
+                                <p class="no-margin ">+77 123 1234<br>+42 98 9876</p>
+                            </div>
+                            <!-- <div class="feature feature-icon-hover indent">
+                                <span class="ib ic ic-letter ic-lg"></span>
+                                <p class="no-margin ">boss@example.com<br>me@example.com</p>
+                            </div>
+                            <div class="feature feature-icon-hover indent last">
+                                <span class="ib ic ic-skype ic-lg"></span>
+                                <p class="no-margin ">Skype: samplelogin<br>skype-support</p>
+                            </div> -->
+                        </div>
 
-    </div>
-<!-- </div> -->
+                    </div>
+                    <!-- </div> -->
                     <br>
+                    <p><a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
+                    <?php /* ?>
                 <?php if(!$_product->canConfigure() && $_product->isSaleable()): ?>
                     <p><button type="button" title="<?php echo Mage::helper('core')->quoteEscape($this->__('Add to Cart')) ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
-                <?php elseif($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
+                    
+                <?php if($_product->getStockItem() && $_product->getStockItem()->getIsInStock()): ?>
                     <p><a title="<?php echo $this->__('View Details') ?>" class="button btn-cart" href="<?php echo $_product->getProductUrl() ?>"><?php echo $this->__('View Details') ?></a></p>
                 <?php else: ?>
                     <p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
@@ -216,6 +222,7 @@
                 // else
                 //     echo $helpTemplate->getCategoryAddtoLinksComplex($_product, $this->getAddToCompareUrl($_product), 'addto-gaps-right');
                 ?>
+                <?php // */ ?>
             </div>
             <!-- End infor -->
 

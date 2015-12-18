@@ -165,7 +165,7 @@
 				<?php if ($useRichSnippets): ?><meta itemprop="productID" content="sku:<?php echo $sku; ?>" /><?php endif; ?>
 			<?php endif; ?>
 
-			<?php echo $this->getChildHtml('alert_urls'); //alerts ?>
+			<?php //echo $this->getChildHtml('alert_urls'); //alerts ?>
 			
 			<?php if ($extrahint_html = $this->getChildHtml('extrahint')): //qty increments ?>
 				<div class="extrahint-wrapper"><?php echo $extrahint_html; ?></div>
@@ -178,11 +178,11 @@
 			</div> <?php //end: offers ?>
 
 			<?php if (!$this->hasOptions()): //add to cart when no options (e.g. simple products) ?>
-				<?php if($_product->isSaleable()): ?>
+				<?php //if($_product->isSaleable()): ?>
 					<div class="add-to-box">
 						<?php echo $this->getChildHtml('addtocart') ?>
 					</div>
-				<?php endif; ?>
+				<?php // endif; ?>
 				<?php echo $this->getChildHtml('extra_buttons') ?>
 			<?php endif; ?>
 
