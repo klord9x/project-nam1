@@ -40,8 +40,8 @@
 ?>
 <?php if($this->getCollection()->getSize()): ?>
 <div class="toolbar">
-
-	<?php if( $this->isExpanded() ): ?>
+<!-- Avoid blog -->
+	<?php if( $this->isExpanded() && $this->isEnabledViewSwitcher() ): ?>
 	<div class="sorter">
 	
 		<p class="amount">
