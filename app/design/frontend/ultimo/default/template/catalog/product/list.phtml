@@ -181,7 +181,14 @@
 
                     <!-- <div class="grid12-3"> -->
                     <div class="collapsible mobile-collapsible">
+                    <?php
+                        $active = Mage::getModel('cms/block')->load('mode_list_lien_he')->getIsActive();
+                    ?>
 
+                    <?php if($active ==1): 
+                        echo $this->getLayout()->createBlock('cms/block')->setBlockId('mode_list_lien_he')->toHtml();
+                    ?>
+                    <?php else: ?>
                         <h6 class="block-title heading">Liên hệ</h6>
                         <div class="block-content">
                             <div class="feature feature-icon-hover indent first">
@@ -192,6 +199,20 @@
                                 <span class="ib ic ic-mobile ic-lg"></span>
                                 <p class="no-margin ">+77 123 1234<br>+42 98 9876</p>
                             </div>
+                        </div>
+                    <?php endif; ?>
+
+                         
+                        <!-- <h6 class="block-title heading">Liên hệ</h6>
+                        <div class="block-content">
+                            <div class="feature feature-icon-hover indent first">
+                                <span class="ib ic ic-phone ic-lg"></span>
+                                <p class="no-margin ">Call Us +001 555 801<br>Fax +001 555 802</p>
+                            </div>
+                            <div class="feature feature-icon-hover indent">
+                                <span class="ib ic ic-mobile ic-lg"></span>
+                                <p class="no-margin ">+77 123 1234<br>+42 98 9876</p>
+                            </div> -->
                             <!-- <div class="feature feature-icon-hover indent">
                                 <span class="ib ic ic-letter ic-lg"></span>
                                 <p class="no-margin ">boss@example.com<br>me@example.com</p>
@@ -199,8 +220,7 @@
                             <div class="feature feature-icon-hover indent last">
                                 <span class="ib ic ic-skype ic-lg"></span>
                                 <p class="no-margin ">Skype: samplelogin<br>skype-support</p>
-                            </div> -->
-                        </div>
+                            </div> -->                        
 
                     </div>
                     <!-- </div> -->
