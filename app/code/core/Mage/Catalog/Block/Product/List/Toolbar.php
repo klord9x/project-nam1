@@ -729,6 +729,8 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
 
         $limits = $this->getAvailableLimit();
         $defaultLimit = $this->getDefaultPerPageValue();
+        $category_id = Mage::registry('current_category')->getId();
+        
         if (!$defaultLimit || !isset($limits[$defaultLimit])) {
             $keys = array_keys($limits);
             $defaultLimit = $keys[0];
@@ -743,10 +745,15 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
             }
         } else {
             $limit = Mage::getSingleton('catalog/session')->getLimitPage();
+            // $limit = 'all';
         }
         if (!$limit || !isset($limits[$limit])) {
             $limit = $defaultLimit;
+            if ($category_id == 6) {// id =6 for San pham
+                $limit = 'all';
+            }
         }
+
 
         $this->setData('_current_limit', $limit);
         return $limit;
