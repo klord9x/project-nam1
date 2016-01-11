@@ -729,7 +729,7 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
 
         $limits = $this->getAvailableLimit();
         $defaultLimit = $this->getDefaultPerPageValue();
-        $category_id = Mage::registry('current_category')->getId();
+        $category_id = is_object(Mage::registry('current_category')) ? Mage::registry('current_category')->getId() : 0;
         
         if (!$defaultLimit || !isset($limits[$defaultLimit])) {
             $keys = array_keys($limits);
