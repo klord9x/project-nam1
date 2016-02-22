@@ -722,6 +722,11 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
      */
     public function getLimit()
     {
+        $category_id = is_object(Mage::registry('current_category')) ? Mage::registry('current_category')->getId() : 0;
+        $isHomepage = Mage::getBlockSingleton('page/html_header')->getIsHomePage();
+        if ($category_id == 6 || $isHomepage) {// id =6 for San pham or Homepage
+                return '80';
+        }
         $limit = $this->_getData('_current_limit');
         if ($limit) {
             return $limit;
@@ -729,8 +734,7 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
 
         $limits = $this->getAvailableLimit();
         $defaultLimit = $this->getDefaultPerPageValue();
-        $category_id = is_object(Mage::registry('current_category')) ? Mage::registry('current_category')->getId() : 0;
-        
+                
         if (!$defaultLimit || !isset($limits[$defaultLimit])) {
             $keys = array_keys($limits);
             $defaultLimit = $keys[0];
@@ -749,9 +753,9 @@ class Mage_Catalog_Block_Product_List_Toolbar extends Mage_Core_Block_Template
         }
         if (!$limit || !isset($limits[$limit])) {
             $limit = $defaultLimit;
-            if ($category_id == 6) {// id =6 for San pham
-                $limit = 'all';
-            }
+            // if ($category_id == 6) {// id =6 for San pham
+            //     $limit = 'all';
+            // }
         }
 
 
